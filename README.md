@@ -9,12 +9,12 @@ $ git clone --bare https://github.com/ekfuhrmann/webpack-build.git
 ```
 ```command
 $ cd repo_setup.git
-$ git push --mirror https://github.com/exampleuser/[new-repository].git
+$ git push --mirror https://github.com/[user]/[new-repository].git
 # Mirror-push to the new repository
 ```
 ```command
 $ cd ..
-$ rm -Recurse -Force repo_setup.git
+$ rm -Recurse -Force webpack-build.git
 # Remove our temporary local repository
 ```
 
