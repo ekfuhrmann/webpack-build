@@ -20,7 +20,7 @@ var devConfig = {
     output: {
         publicPath: '/',
         path: PUBLIC,
-        filename: 'js/app.js'
+        filename: 'js/bundle.js'
     },
     devtool: 'source-map',
     module: {
@@ -43,7 +43,11 @@ var devConfig = {
                 exclude: /(node_modules|bower_components)/,
                 loaders: ['babel']
             },
-            {   // Import images
+            {   // Import EJS templates (NOT WORKING ATM)
+                test: /\.ejs$/,
+                loader: 'ejs-compiled'
+            },
+            {   // Import images (NOT WORKING ATM)
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loaders: [
                     'file?hash=sha512&digest=hex&name=images/[hash].[ext]',
@@ -64,7 +68,7 @@ var devConfig = {
         // HtmlWebpackPlugin is what Automatically injects your styles and javascript into your index.html file.
         new HtmlWebpackPlugin({
             title: 'Webpack Build',
-            template: './src/index.ejs'
+            template: './src/views/index.ejs'
         }),
         // We're letting webpack know that we're in a development environment
         new webpack.DefinePlugin({
@@ -90,7 +94,7 @@ var buildConfig = {
     output: {
         publicPath: '/',
         path: PUBLIC,
-        filename: 'js/app.js'
+        filename: 'js/bundle.js'
     },
     devtool: 'source-map',
     module: {
@@ -113,7 +117,11 @@ var buildConfig = {
                 exclude: /(node_modules|bower_components)/,
                 loaders: ['babel']
             },
-            {   // Import images
+            {   // Import EJS templates
+                test: /\.ejs$/,
+                loader: 'ejs-compiled'
+            },
+            {   // Import images (NOT WORKING ATM)
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loaders: [
                     'file?hash=sha512&digest=hex&name=images/[hash].[ext]',
@@ -134,7 +142,7 @@ var buildConfig = {
         // HtmlWebpackPlugin is what Automatically injects your styles and javascript into your index.html file.
         new HtmlWebpackPlugin({
             title: 'Webpack Build',
-            template: './src/index.ejs'
+            template: './src/views/index.ejs'
         }),
         // We're letting webpack know that we're in a development environment
         new webpack.DefinePlugin({
